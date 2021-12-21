@@ -1,7 +1,3 @@
-#To build My project: 
-
-node --max_old_space_size=4096 node_modules/@angular/cli/bin/ng build --prod
-
 # AngularProject2
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.1.
