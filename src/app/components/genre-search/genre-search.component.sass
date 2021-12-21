@@ -1,0 +1,44 @@
+@import "../../styles/mixins"
+
+\:host
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  width: 100%
+
+.genre
+  width: 100%
+  background: none
+  border: none
+  font-style: normal
+  font-weight: bold
+  font-size: 22px
+  line-height: 28px
+  letter-spacing: 0.8px
+  cursor: pointer
+
+  &:not(:last-child, :first-child)
+    border-bottom: 1px solid #cecece
+
+  &__list
+    width: 100%
+    display: flex
+    flex-direction: column
+    padding: 8px
+    background: white
+
+.backdrop
+  background: transparent
+
+.genre_input
+  width: 457px
+  height: 60px
+  border: none
+  border-bottom: 0.5px solid rgba(#000000, 0.2)
+  margin-top: 10px
+  margin-bottom: 10px
+  font-style: normal
+  font-weight: normal
+  font-size: 17px
+  line-height: 22px

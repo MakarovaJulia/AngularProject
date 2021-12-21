@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div class="container">
+
+  <p class="about_film"> О фильме</p>
+  <div class="toggle">
+    <app-toggle></app-toggle>
+  </div>
+    <ng-container *ngIf="(innerValue$); else lst">
+        <app-kinopoisk></app-kinopoisk>
+    </ng-container>
+    <ng-template #lst>
+    <app-by-hand></app-by-hand>
+    </ng-template>
+
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,38 @@
+<form [formGroup]="form">
+
+  <div class="name">
+    Название
+  </div>
+  <label><input
+    type="text"
+    formControlName="searchInput"
+    class="name_input"
+    placeholder="Введите название фильма">
+  </label>
+
+  <div class="film__container">
+    <ng-container *ngIf="(films$ | async)!.length > 0 || !form.dirty; else notFound">
+      <div class="film" *ngFor="let item of films$ | async">
+        <img src="{{item.image}}" alt="">
+        <div>
+          <h2>{{item.name}}</h2>
+          <span>{{item.year}}</span>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #notFound>
+      <div class="no_movie_container">
+        <img class="no_movie" src="/assets/noMovie.svg" alt="">
+        <div class="title_content">
+          <div class="no_movie_title">
+            Фильм не найден
+          </div>
+          <div class="no_movie_link">
+            **Ссылка**
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</form>

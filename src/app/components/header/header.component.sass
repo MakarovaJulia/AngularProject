@@ -1,0 +1,49 @@
+@import "../../styles/mixins.sass"
+
+.header
+  display: flex
+  align-items: center
+  justify-content: space-between
+  max-width: 1440px
+  width: 100%
+  padding: 15px 32px
+
+  &__wrapper
+    display: flex
+    justify-content: center
+    width: 100%
+    background: rgba(249, 249, 249, 0.94)
+
+nav
+  display: flex
+
+  .link
+    display: flex
+    align-items: center
+    color: black
+    @include regular-text
+    letter-spacing: -0.336px
+    text-decoration: none
+
+    &:not(:last-child)
+      margin-right: 42px
+
+    img
+      max-width: 24px
+      max-height: 24px
+      width: 24px
+      height: 24px
+      margin-right: 12px
+
+.logo
+  width: 47px
+  height: 18px
+
+.actions
+  display: flex
+  align-items: center
+
+.avatar
+  width: 40px
+  height: 40px
+  margin-left: 27px

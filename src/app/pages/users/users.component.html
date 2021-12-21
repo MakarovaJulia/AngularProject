@@ -1,0 +1,18 @@
+<div class="user__list">
+  <div
+    class="user"
+    *ngFor="let user of usersList; let i = index"
+  >
+    <span>Name: {{user.name}}</span>
+    <span>Is Active: {{user.isActive}}</span>
+    <a
+      [routerLink]="['/user', user.id]"
+      [queryParams]="{
+				active: user.isActive
+			}"
+    >Перейти</a>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>
