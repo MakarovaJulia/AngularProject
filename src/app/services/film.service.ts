@@ -102,4 +102,9 @@ export class FilmService {
 
   constructor() {
   }
+
+  clean():void{
+    this.films$.next([]);
+  }
+
 }

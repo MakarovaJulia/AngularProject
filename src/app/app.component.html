@@ -5,7 +5,7 @@
   <div class="toggle">
     <app-toggle></app-toggle>
   </div>
-    <ng-container *ngIf="(innerValue$); else lst">
+    <ng-container *ngIf="(toggle.getState() | async); else lst">
         <app-kinopoisk></app-kinopoisk>
     </ng-container>
     <ng-template #lst>

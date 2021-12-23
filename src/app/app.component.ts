@@ -13,13 +13,14 @@ export class AppComponent {
   title = 'my-app';
   form: FormGroup;
   films$ = this.filmService.films$;
-  innerValue$ = this.toggle.innerValue$;
 
-  constructor(private fb: FormBuilder, private filmService: FilmService, private toggle: ToggleComponent) {
+  constructor(private fb: FormBuilder, private filmService: FilmService, public toggle: ToggleComponent) {
     this.form = this.fb.group({
       searchInput: [],
       genre:[[]]
     })
+
+
   this.form.get('searchInput')!.valueChanges
     .pipe(
       delay(700),

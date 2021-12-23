@@ -1,8 +1,8 @@
 <div class="toggle__wrapper">
-  <button class="toggle" (click)="toggle(true)" [class.toggle--active]="_value">
+  <button class="toggle" (click)="setState(true)" [class.toggle--active]="innerValue">
     КиноПоиск
   </button>
-  <button class="toggle" (click)="toggle(false)" [class.toggle--active]="!_value">
+  <button class="toggle" (click)="setState(false)" [class.toggle--active]="!innerValue">
     Вручную
   </button>
 </div>

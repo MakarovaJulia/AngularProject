@@ -38,4 +38,9 @@ export class KinopoiskComponent {
   openModal(): void {
     this.modalIsOpen = true;
     }
+
+  delete():void{
+    this.filmService.clean();
+    this.form.get('searchInput')?.setValue('');
+  }
 }
