@@ -7,11 +7,6 @@ import {AppComponent} from "./app.component";
 
 const routes: Routes = [
   {
-    path: 'app',
-    component: AppComponent,
-    pathMatch: 'full'
-  },
-  {
     path: 'users',
     component: UsersComponent,
     canActivate: [AuthGuard],

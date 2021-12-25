@@ -8,7 +8,11 @@
     formControlName="searchInput"
     class="name_input"
     placeholder="Введите название фильма">
-    <button (click)="delete()"></button>
+    <ng-container *ngIf="form.dirty">
+      <button class="btn--delete" (click)="delete()">
+        <img src="/assets/delete.svg">
+      </button>
+    </ng-container>
   </label>
 
   <div class="film__container">
@@ -30,7 +34,7 @@
             Фильм не найден
           </div>
           <div class="no_movie_link">
-            **Ссылка**
+            Добавить вручную
           </div>
         </div>
       </div>

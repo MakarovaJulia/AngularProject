@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, forwardRef, Injectable, OnInit} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import {BehaviorSubject, Observable} from "rxjs";
 
 @Component({
   selector: 'app-toggle',
@@ -16,28 +15,32 @@ import {BehaviorSubject, Observable} from "rxjs";
   ]
 })
 
-@Injectable({
-  providedIn: 'root'
-})
+export class ToggleComponent implements ControlValueAccessor {
+  innerValue: boolean = true;
 
-export class ToggleComponent {
-
-  private _value: boolean = false;
-
-  public innerValue = new BehaviorSubject<boolean>(this._value);
-
-  constructor() {
+  onChangeCallback = (v: any) => {};
+  onTouchedCallback = () => {};
+  registerOnChange(fn: any): void {
+    this.onChangeCallback = fn;
   }
 
-  getState(): Observable<boolean> {
-    return this.innerValue;
-  };
+  registerOnTouched(fn: any): void {
+    this.onTouchedCallback = fn;
+  }
 
-  setState(value: boolean): void {
-    if (value != this._value){
-      this._value = value;
-      this.innerValue.next(value)
+  writeValue(value: boolean): void {
+    if (value !== this.innerValue) {
+      this.innerValue = value;
     }
-      console.log(this.innerValue)
+  }
+
+  toggle(value: boolean): void {
+    if (value !== this.innerValue) {
+      this.innerValue = value;
+      this.onChangeCallback(value);
+      this.onTouchedCallback();
     }
+  }
+  constructor() {
+  }
 }

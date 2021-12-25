@@ -2,15 +2,16 @@
 <div class="container">
 
   <p class="about_film"> О фильме</p>
-  <div class="toggle">
-    <app-toggle></app-toggle>
-  </div>
-    <ng-container *ngIf="(toggle.getState() | async); else lst">
-        <app-kinopoisk></app-kinopoisk>
-    </ng-container>
-    <ng-template #lst>
+  <form class = "formSwitch" [formGroup]="formToggle">
+    <app-toggle
+      formControlName="toggle">
+    </app-toggle>
+  </form>
+  <ng-container *ngIf="isFilmSearch; else lst">
+    <app-kinopoisk></app-kinopoisk>
+  </ng-container>
+  <ng-template #lst>
     <app-by-hand></app-by-hand>
-    </ng-template>
-
+  </ng-template>
 </div>
 <router-outlet></router-outlet>

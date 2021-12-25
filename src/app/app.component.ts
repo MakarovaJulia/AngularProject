@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
+import {ChangeDetectionStrategy, Component, forwardRef, OnInit} from '@angular/core';
+import {FormArray, FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {FilmService} from "./services/film.service";
 import {delay, distinctUntilChanged} from "rxjs/operators";
 import {ToggleComponent} from "./components/toggle/toggle.component";
@@ -7,35 +7,39 @@ import {ToggleComponent} from "./components/toggle/toggle.component";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  styleUrls: ['./app.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => ToggleComponent),
+      multi: true
+    }
+  ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'my-app';
   form: FormGroup;
   films$ = this.filmService.films$;
+  isFilmSearch: boolean = true;
+  formToggle: FormGroup;
 
-  constructor(private fb: FormBuilder, private filmService: FilmService, public toggle: ToggleComponent) {
+  constructor(private fb: FormBuilder, private filmService: FilmService) {
     this.form = this.fb.group({
       searchInput: [],
       genre:[[]]
     })
 
-
-  this.form.get('searchInput')!.valueChanges
-    .pipe(
-      delay(700),
-      distinctUntilChanged()
-    )
-    .subscribe(res => {
-      this.filmService.searchFilm(res);
+    this.formToggle = this.fb.group({
+      toggle: [true]
     })
+
+    this.formToggle.valueChanges.subscribe(res => {
+      this.isFilmSearch = res.toggle;
+    })
+
   }
 
-  formatValue(arr: any[], id:any ):any {
-      return arr.find(item => item.id === id);
-  }
-
-  removeElement(inx:number):any {
-    (this.form.get('form') as FormArray).removeAt(inx);
+  ngOnInit(): void {
   }
 }
