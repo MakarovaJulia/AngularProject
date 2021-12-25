@@ -3,26 +3,44 @@
     <div class="name">
       Название
     </div>
-    <label><input type="search" class="name_input" placeholder="Например, Титаник" data-dismiss="modal"></label>
+    <label><input
+      type="search"
+      class="name_input"
+      placeholder="Например, Титаник"
+      data-dismiss="modal">
+    </label>
   </div>
   <div>
     <div class="name">
       Год
     </div>
-    <label><input type="search" class="name_input" placeholder="Укажите год выхода фильма" data-dismiss="modal"></label>
+    <label><input
+      type="search"
+      class="name_input"
+      placeholder="Укажите год выхода фильма"
+      data-dismiss="modal">
+    </label>
   </div>
   <div>
     <div class="name">
       Описание
     </div>
-    <label><input type="search" class="name_input" placeholder="Напишите пару слов о сюжете" data-dismiss="modal"></label>
+    <label><input
+      type="search"
+      class="name_input"
+      placeholder="Напишите пару слов о сюжете"
+      data-dismiss="modal">
+    </label>
   </div>
   <app-genre-search formControlName="genre"></app-genre-search>
   <div>
     <div class="name">
       Постер
     </div>
-    <button class="btn--upload">Загрузить фото</button>
+    <button class="btn--upload">
+      <img src="/assets/Symbol.svg" alt="">
+      Загрузить фото
+    </button>
   </div>
   <div class="save_button">
     <app-button [theme]="'THIRD'">

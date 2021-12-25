@@ -66,4 +66,8 @@ export class KinopoiskComponent implements OnInit{
   ngOnInit(): void {
   }
 
+  toggle():void{
+    this.isFilmSearch = !this.isFilmSearch;
+    console.log(this.isFilmSearch)
+  }
 }
