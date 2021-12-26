@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import {AbstractControl} from "@angular/forms";
 
 interface Film {
-  image: string;
+  image?: string;
   name: string;
   id: number;
-  year: string;
+  year: number;
   information: string;
-  genre: string;
+  genre?: string;
 }
 
 const MockFilms: Array<Film> = [
   {
     name: 'Минари',
-    year: '2020',
+    year: 2020,
     id: 1,
     information: 'День летнего солнцестояния – древний праздник, который во всех культурах окутан мистическим ореолом.' +
       ' В отрезанном от цивилизованного мира шведском поселении в этот день проводятся уникальные обряды с многовековой традицией.' +
@@ -24,7 +25,7 @@ const MockFilms: Array<Film> = [
   },
   {
     name: 'Солнцестояние',
-    year: '2019',
+    year: 2019,
     id: 2,
     information: '1980-е годы. Семья корейских иммигрантов с двумя детьми переезжает из Калифорнии в Арканзас. ' +
       'Глава семейства купил тут участок земли и собирается заняться фермерством,' +
@@ -34,7 +35,7 @@ const MockFilms: Array<Film> = [
   },
   {
     name: 'Манк',
-    year: '2020',
+    year: 2020,
     id: 3,
     information: '1940 год. Нью-йоркский острослов Герман Манкевич, когда-то приехавший покорять Голливуд и в целом преуспевший,' +
       ' с переломами после автоаварии уединяется в домике посреди пустыни Мохаве. Он помещен в заточение продюсером Джоном Хаусменом' +
@@ -46,7 +47,7 @@ const MockFilms: Array<Film> = [
   },
   {
     name: 'Девушка, подающая надежды',
-    year: '2020',
+    year: 2020,
     id: 4,
     information: 'Когда-то Кассандра училась в университете и подавала большие надежды,' +
       ' но теперь живёт с родителями и работает в кофейне. Девушка скрывает от близких, ' +
@@ -58,7 +59,7 @@ const MockFilms: Array<Film> = [
   },
   {
     name: 'Душа',
-    year: '2020',
+    year: 2020,
     id: 5,
     information: 'Уже немолодой школьный учитель музыки Джо Гарднер всю жизнь мечтал' +
       ' выступать на сцене в составе джазового ансамбля. Однажды он успешно проходит прослушивание ' +
@@ -72,7 +73,7 @@ const MockFilms: Array<Film> = [
   },
   {
     name: 'Довод',
-    year: '2020',
+    year: 2020,
     id: 6,
     information: 'Протагонист пытается обезвредить террориста с помощью уникальной технологии.' +
       ' Блокбастер-пазл Кристофера Нолана. ',
@@ -88,6 +89,7 @@ const MockFilms: Array<Film> = [
 export class FilmService {
 
   films$: BehaviorSubject<Array<Film>> = new BehaviorSubject<Array<Film>>([]);
+  id: number = 7;
 
   searchFilm(filmName: string): void {
     if (filmName.length < 1) {
@@ -107,4 +109,17 @@ export class FilmService {
     this.films$.next([]);
   }
 
+  addFilm(name: string, year: string, information: string, genre?: string): void {
+    MockFilms.push(
+      {
+        id: this.id,
+        name: name,
+        year: Number(year),
+        information: information,
+        genre: genre,
+        image: "/assets/img/noMovie.svg"
+      }
+    )
+    this.id++;
+  }
 }
