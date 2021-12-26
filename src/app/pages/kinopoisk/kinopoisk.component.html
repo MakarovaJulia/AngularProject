@@ -18,6 +18,7 @@
   <div class="film__container">
     <ng-container *ngIf="(films$ | async)!.length > 0 || !form.dirty; else notFound">
       <div class="film" *ngFor="let item of films$ | async">
+        <div class="film_link" [routerLink]= "['/film/', item.id]"></div>
         <img src="{{item.image}}" alt="">
         <div>
           <h2>{{item.name}}</h2>

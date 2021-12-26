@@ -15,6 +15,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { GenreSearchComponent } from './components/genre-search/genre-search.component';
 import {RouterModule} from "@angular/router";
 import { ByHandComponent } from './pages/by-hand/by-hand.component';
+import { MainComponent } from './components/main/main.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ByHandComponent } from './pages/by-hand/by-hand.component';
     ToggleComponent,
     ButtonComponent,
     GenreSearchComponent,
-    ByHandComponent
+    ByHandComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
