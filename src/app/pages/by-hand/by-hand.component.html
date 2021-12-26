@@ -1,9 +1,10 @@
-<form>
+<form [formGroup]="filmInfo">
   <div>
     <div class="name">
       Название
     </div>
     <label><input
+      formControlName="name"
       type="search"
       class="name_input"
       placeholder="Например, Титаник"
@@ -15,6 +16,7 @@
       Год
     </div>
     <label><input
+      formControlName="year"
       type="search"
       class="name_input"
       placeholder="Укажите год выхода фильма"
@@ -26,6 +28,7 @@
       Описание
     </div>
     <label><input
+      formControlName="info"
       type="search"
       class="name_input"
       placeholder="Напишите пару слов о сюжете"
@@ -43,7 +46,7 @@
     </button>
   </div>
   <div class="save_button">
-    <app-button [theme]="'THIRD'">
+    <app-button [theme]="'THIRD'" (click)="save()">
       <img src="/assets/icons/plus.svg" alt="">
       Сохранить
     </app-button>

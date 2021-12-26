@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {ByHandComponent} from "./pages/by-hand/by-hand.component";
-import {AppComponent} from "./app.component";
 import {MainComponent} from "./components/main/main.component";
+import {FilmInfoComponent} from "./pages/film-info/film-info.component";
 
 const routes: Routes = [
   {
@@ -11,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'film/:id',
-    component: ByHandComponent
+    component: FilmInfoComponent
   }
 ];
 

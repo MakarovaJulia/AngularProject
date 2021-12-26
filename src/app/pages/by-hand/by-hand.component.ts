@@ -1,5 +1,5 @@
 import {Component, forwardRef, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {ToggleComponent} from "../../components/toggle/toggle.component";
 
 @Component({
@@ -18,6 +18,7 @@ export class ByHandComponent implements OnInit {
   isFilmSearch: boolean = true;
 
   formToggle: FormGroup;
+  filmInfo: FormGroup;
 
   constructor(private fb: FormBuilder) {
     this.formToggle = this.fb.group({
@@ -27,9 +28,20 @@ export class ByHandComponent implements OnInit {
         this.isFilmSearch = res.toggle;
       }
     )
+    this.filmInfo = new FormGroup({
+      name: new FormControl(null),
+      year: new FormControl(null),
+      info: new FormControl(null),
+    })
+    this.filmInfo.valueChanges.subscribe((v) => {
+      console.log(v)
+    })
   }
 
   ngOnInit(): void {
   }
 
+  save():void{
+    console.log("Сохранено")
+  }
 }
