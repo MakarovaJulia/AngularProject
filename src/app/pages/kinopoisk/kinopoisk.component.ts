@@ -67,7 +67,6 @@ export class KinopoiskComponent implements OnInit{
   }
 
   toggle():void{
-    this.isFilmSearch = !this.isFilmSearch;
-    console.log(this.isFilmSearch)
+    this.formToggle.setValue(() => !this.isFilmSearch)
   }
 }

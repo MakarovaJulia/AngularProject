@@ -1,5 +1,6 @@
-import {ChangeDetectionStrategy, Component, forwardRef, Injectable, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, Injectable, OnInit, ViewChild} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {KinopoiskComponent} from "../../pages/kinopoisk/kinopoisk.component";
 
 @Component({
   selector: 'app-toggle',
