@@ -112,7 +112,7 @@ export class FilmService {
    return  MockFilms.find(film => film.id == id)
   }
 
-  addFilm(name: string, year: string, information: string, genre?: string): void {
+  addFilm(name: string, year: string, information: string, genre?: string, image?:string): void {
     MockFilms.push(
       {
         id: this.id,
@@ -120,7 +120,7 @@ export class FilmService {
         year: Number(year),
         information: information,
         genre: genre,
-        image: "/assets/img/noMovie.svg"
+        image: image
       }
     )
     this.id++;

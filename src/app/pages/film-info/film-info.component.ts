@@ -21,6 +21,7 @@ export class FilmInfoComponent implements OnInit {
   films$ = this.filmService.films$;
   filmInfo: FormGroup;
   id: number;
+  imageUrl: string | undefined;
 
   constructor(private filmService: FilmService, private route: ActivatedRoute, private router: Router) {
     this.id = route.snapshot.params['id'];
@@ -29,6 +30,8 @@ export class FilmInfoComponent implements OnInit {
       year: new FormControl(this.filmService.getFilmById(this.id)?.year),
       info: new FormControl(this.filmService.getFilmById(this.id)?.information),
     })
+    this.imageUrl = this.filmService.getFilmById(this.id)?.image
+    console.log(this.imageUrl)
   }
 
   ngOnInit(): void {

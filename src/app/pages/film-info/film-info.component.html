@@ -34,17 +34,19 @@
         data-dismiss="modal">
       </label>
     </div>
-    <app-genre-search formControlName="genre"></app-genre-search>
+
     <div>
       <div class="name">
         Постер
       </div>
-      <button class="btn--upload">
-        <img src="/assets/Symbol.svg" alt="">
-        Загрузить фото
-      </button>
+      <img class="poster" src="{{imageUrl}}"/>
+    </div>
+    <div class="save_button">
+      <app-button [theme]="'THIRD'" type="submit">
+        <img src="/assets/icons/plus.svg" alt="">
+        Сохранить
+      </app-button>
     </div>
   </form>
-
 </div>
 <router-outlet></router-outlet>
