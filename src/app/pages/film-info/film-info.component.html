@@ -1,5 +1,50 @@
 <app-header></app-header>
 <div class="container">
-  <app-by-hand></app-by-hand>
+  <form [formGroup]="filmInfo">
+    <div>
+      <div class="name">
+        Название
+      </div>
+      <label><input
+        formControlName="name"
+        type="search"
+        class="name_input"
+        data-dismiss="modal">
+      </label>
+    </div>
+    <div>
+      <div class="name">
+        Год
+      </div>
+      <label><input
+        formControlName="year"
+        type="search"
+        class="name_input"
+        data-dismiss="modal">
+      </label>
+    </div>
+    <div>
+      <div class="name">
+        Описание
+      </div>
+      <label><input
+        formControlName="info"
+        type="search"
+        class="name_input"
+        data-dismiss="modal">
+      </label>
+    </div>
+    <app-genre-search formControlName="genre"></app-genre-search>
+    <div>
+      <div class="name">
+        Постер
+      </div>
+      <button class="btn--upload">
+        <img src="/assets/Symbol.svg" alt="">
+        Загрузить фото
+      </button>
+    </div>
+  </form>
+
 </div>
 <router-outlet></router-outlet>

@@ -12,6 +12,11 @@ import { FilmService } from '../../services/film.service';
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => ToggleComponent),
       multi: true
+    },
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => ByHandComponent),
+      multi: true
     }
   ]
 })
@@ -36,6 +41,7 @@ export class ByHandComponent implements OnInit {
       year: new FormControl(null),
       info: new FormControl(""),
     })
+
     this.filmInfo.valueChanges.subscribe((v) => {
       console.log(v)
     })

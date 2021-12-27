@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import {AbstractControl} from "@angular/forms";
 
 interface Film {
   image?: string;
@@ -107,6 +106,10 @@ export class FilmService {
 
   clean():void{
     this.films$.next([]);
+  }
+
+  getFilmById(id:number): Film | undefined{
+   return  MockFilms.find(film => film.id == id)
   }
 
   addFilm(name: string, year: string, information: string, genre?: string): void {
